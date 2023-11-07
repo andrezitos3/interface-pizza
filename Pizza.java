@@ -2,13 +2,13 @@ package pizzariadaclau;
 
 public class Pizza {
 
-    private String sabor;
-    private String borda;
-    private String preco;
-    private String azeitona;
-    private String formato;
-    private int id;
-    private int[] pizzasid = new int[5];
+    protected String sabor;
+    protected String borda;
+    protected String preco;
+    protected String azeitona;
+    protected String formato;
+    protected int id;
+    protected int[] pizzasid = new int[5];
 
     @Override
     public String toString(){
@@ -69,7 +69,7 @@ public class Pizza {
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(int id) {

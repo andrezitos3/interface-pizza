@@ -504,20 +504,19 @@ public class InterfacePizza extends javax.swing.JFrame {
             if (cont < ListaPizza.pizzas.length) {
                 ListaPizza.pizzas[cont] = new Pizza(jTextFieldSabor.getText(), borda, jTextFieldPreco.getText(), azeitona,
                         jTextFieldFormato1.getText());
-                ListaPizza.pizzas[cont].setId(numid.nextInt((10000 - 1000) + 1) + 100);
-                String idstring = Integer.toString(ListaPizza.pizzas[cont].getId());
+                ListaPizza.pizzas[cont].id = numid.nextInt((10000 - 1000) + 1) + 100;
+                String idstring = Integer.toString(ListaPizza.pizzas[cont].id);
                 jTextFieldID.setText(idstring);
                 System.out.println(ListaPizza.pizzas[cont].toString());
                 condApagar = true;
-                taAvisos.setText("pizza " + (cont + 1) + " adicionada!");
                 cont++;
                 apagarCampos();
             } else {
-                taAvisos.setText("Numero total atingido!\nredefinindo a ultima pizza...\npizza 5 adicionada!");
+                System.out.println("Numero total atingido! redefinindo a ultima pizza...");
                 ListaPizza.pizzas[4] = new Pizza(jTextFieldSabor.getText(), borda, jTextFieldPreco.getText(), azeitona,
                         jTextFieldFormato1.getText());
-                ListaPizza.pizzas[4].setId(numid.nextInt((10000 - 1000) + 1) + 100);
-                String idstring2 = Integer.toString(ListaPizza.pizzas[4].getId());
+                ListaPizza.pizzas[4].id = numid.nextInt((10000 - 1000) + 1) + 100;
+                String idstring2 = Integer.toString(ListaPizza.pizzas[4].id);
                 jTextFieldID.setText(idstring2);
                 System.out.println(ListaPizza.pizzas[4].toString());
                 condApagar = true;
@@ -525,15 +524,8 @@ public class InterfacePizza extends javax.swing.JFrame {
             }
         }
         else {
-            JOptionPane.showMessageDialog(jPanel1, "valores invalidos! tente novamente preenchendo todos os campos de forma correta!", "AVISO!", JOptionPane.WARNING_MESSAGE);
+            System.out.println("valores invalidos! tente novamente preenchendo todos os campos de forma correta!");
         }
-        //ListaPizza.pizzas[0] = new Pizza(jTextFieldSabor.getText(), marcacaoborda, jTextFieldPreco.getText(), marcacaoazeitona,
-        //jTextFieldFormato1.getText()); 
-        //for (int i = 0; i < 5; i++){
-           // if (ListaPizza.pizzas.length < 6){
-           //         ListaPizza.pizzas[i].sabor = jTextFieldSabor.getText();
-           // }
-        //}
     }//GEN-LAST:event_jButtonAdicionar1ActionPerformed
 
     private void jCheckBoxRecheioTRUEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxRecheioTRUEActionPerformed
@@ -552,11 +544,10 @@ public class InterfacePizza extends javax.swing.JFrame {
 
     
     public void mensagemApagar(){
-        taAvisos.setText("Pizza removida com sucesso!");
+        System.out.println("Pizza removida com sucesso!");
     }
     
     private void jComboBoxApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxApagarActionPerformed
-        inserirObjeto();
         if (jComboBoxApagar.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(jPanel1, "escolha inválida! tente novamente", "AVISO!", JOptionPane.WARNING_MESSAGE);
         }
@@ -564,35 +555,35 @@ public class InterfacePizza extends javax.swing.JFrame {
             // public pizza new blabla bla apagar com parametro vazio (tomara q de certo vsf)
             ListaPizza.pizzas[0] = new Pizza();
             mensagemApagar();
-            taAvisos.setText("indice da remoção: 1");
+            System.out.println("indice da remoção: 1");
             apagarCampos();
             cont = 0;
         }
         else if (jComboBoxApagar.getSelectedIndex() == 2 && condApagar) {
             ListaPizza.pizzas[1] = new Pizza();
             mensagemApagar();
-            taAvisos.setText("indice da remoção: 2");
+            System.out.println("indice da remoção: 2");
             apagarCampos();
             cont = 1;
         }
         else if (jComboBoxApagar.getSelectedIndex() == 3 && condApagar) {
             ListaPizza.pizzas[2] = new Pizza();
             mensagemApagar();
-            taAvisos.setText("indice da remoção: 3");
+            System.out.println("indice da remoção: 3");
             apagarCampos();
             cont = 2;
         }
         else if (jComboBoxApagar.getSelectedIndex() == 4 && condApagar) {
             ListaPizza.pizzas[3] = new Pizza();
             mensagemApagar();
-            taAvisos.setText("indice de remoção: 4");
+            System.out.println("indice de remoção: 4");
             apagarCampos();
             cont = 3;
         }
         else if (jComboBoxApagar.getSelectedIndex() == 5 && condApagar){
             ListaPizza.pizzas[4] = new Pizza();
             mensagemApagar();
-            taAvisos.setText("indice de remoção:  5");
+            System.out.println("indice de remoção:  5");
             apagarCampos();
             cont = 4;
         }
@@ -603,59 +594,25 @@ public class InterfacePizza extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxApagarComponentShown
 
-    
-    public void inserirObjeto(){
-         Random numid = new Random();
-        if (jTextFieldSabor.getText().length() != 0 && (jCheckBoxRecheioTRUE.isSelected() || jCheckBoxRecheioFALSE.isSelected())
-                && (jCheckBoxAzeitonaTRUE.isSelected() || jCheckBoxAzeitonaFALSE.isSelected()) && jTextFieldFormato1.getText().length() != 0
-                && jTextFieldPreco.getText().length() != 0 && jTextFieldPreco.getText().matches("^[0-9]*$")) {
-            if (cont < ListaPizza.pizzas.length) {
-                ListaPizza.pizzas[cont] = new Pizza(jTextFieldSabor.getText(), borda, jTextFieldPreco.getText(), azeitona,
-                        jTextFieldFormato1.getText());
-                ListaPizza.pizzas[cont].setId(numid.nextInt((10000 - 1000) + 1) + 100);
-                String idstring = Integer.toString(ListaPizza.pizzas[cont].getId());
-                jTextFieldID.setText(idstring);
-                System.out.println(ListaPizza.pizzas[cont].toString());
-                condApagar = true;
-                taAvisos.setText("pizza " + (cont + 1) + " adicionada!");
-                cont++;
-                apagarCampos();
-            } else {
-                taAvisos.setText("Numero total atingido!\nredefinindo a ultima pizza...\npizza 5 adicionada!");
-                ListaPizza.pizzas[4] = new Pizza(jTextFieldSabor.getText(), borda, jTextFieldPreco.getText(), azeitona,
-                        jTextFieldFormato1.getText());
-                ListaPizza.pizzas[4].setId(numid.nextInt((10000 - 1000) + 1) + 100);
-                String idstring2 = Integer.toString(ListaPizza.pizzas[4].getId());
-                jTextFieldID.setText(idstring2);
-                System.out.println(ListaPizza.pizzas[4].toString());
-                condApagar = true;
-                apagarCampos();
-            }
-        }
-        else {
-            JOptionPane.showMessageDialog(jPanel1, "valores invalidos! tente novamente preenchendo todos os campos de forma correta!", "AVISO!", JOptionPane.WARNING_MESSAGE);
-        }
-    }
-    
     public static void atribuirIdsString(){
-        stpizzaid1 = Integer.toString(ListaPizza.pizzas[0].getId());
-        stpizzaid2 = Integer.toString(ListaPizza.pizzas[1].getId());
-        stpizzaid3 = Integer.toString(ListaPizza.pizzas[2].getId());
-        stpizzaid4 = Integer.toString(ListaPizza.pizzas[3].getId());
-        stpizzaid5 = Integer.toString(ListaPizza.pizzas[4].getId());
-        if (ListaPizza.pizzas[0].getId() == 0){
+        stpizzaid1 = Integer.toString(ListaPizza.pizzas[0].id);
+        stpizzaid2 = Integer.toString(ListaPizza.pizzas[1].id);
+        stpizzaid3 = Integer.toString(ListaPizza.pizzas[2].id);
+        stpizzaid4 = Integer.toString(ListaPizza.pizzas[3].id);
+        stpizzaid5 = Integer.toString(ListaPizza.pizzas[4].id);
+        if (ListaPizza.pizzas[0].id == 0){
             stpizzaid1 = "id vazio";
         }
-        if (ListaPizza.pizzas[1].getId() == 0){
+        if (ListaPizza.pizzas[1].id == 0){
             stpizzaid2 = "id vazio";
         }
-        if (ListaPizza.pizzas[2].getId() == 0) {
+        if (ListaPizza.pizzas[2].id == 0) {
             stpizzaid3 = "id vazio";
         }
-        if (ListaPizza.pizzas[3].getId() == 0){
+        if (ListaPizza.pizzas[3].id == 0){
             stpizzaid4 = "id vazio";
         }
-        if (ListaPizza.pizzas[4].getId() == 0){
+        if (ListaPizza.pizzas[4].id == 0){
             stpizzaid5 = "id vazio";
         }
     }
@@ -678,7 +635,7 @@ public class InterfacePizza extends javax.swing.JFrame {
 
             } else if (jComboBoxEditar.getSelectedIndex() == 1) {
                 //JOptionPane.showMessageDialog(jPanel1,"teste", "oi", JOptionPane.ERROR_MESSAGE);
-                taAvisos.setText("Editando pizza 1 ! \nid: " + ListaPizza.pizzas[0].getId()); //ListaPizza.pizzas[0].getId());
+                taAvisos.setText("       Editando pizza 1 ! \nid: " + ListaPizza.pizzas[0].id); //ListaPizza.pizzas[0].getId());
             }
         }
         catch (NullPointerException error){
